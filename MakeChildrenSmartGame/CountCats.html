@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<style>
+@font-face { font-family: June; src: url('JUNEBUG.TTF'); } 
+
+img {
+	position: fixed;
+}
+
+.Cat {
+	visibility: hidden;
+}
+
+.Answer {
+	position: fixed;
+	font-family: June;
+	color: White;
+	opacity: 0.65;
+	font-size: 60pt;
+}
+
+#correct {
+	position:fixed; 
+	left:450px; 
+	top:100px; 
+	font-size:35pt; 
+	font-family:Arial; 
+	font-weight:900;
+	color:green;
+	visibility:hidden;
+}
+
+#incorrect {
+	position:fixed; 
+	left:450px; 
+	top:60px; 
+	font-size:35pt; 
+	font-family:Arial; 
+	font-weight:900;
+	text-align:center;
+	color:red;
+	visibility:hidden;
+}
+
+#score {
+	position:fixed;
+	font-size:30pt;
+	font-family:June;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Contains the house image with all the cats. Cats are initially hidden -->
+<img src="Images/House.png" alt="" width=900px height=690px style="top:100px; left:-5px"> </img>
+<img class="Cat" id="Cat1" src="Images/Cat1.png" alt="" width=200px height=80px style="top:560px; left:30px; transform:scaleX(-1);"> </img>
+<img class="Cat" id="Cat2" src="Images/Cat1.png" alt="" width=120px height=50px style="top:490px; left:370px;"> </img>
+<img class="Cat" id="Cat3" src="Images/Cat7.png" alt="" width=100px height=70 style="top:520px; left:570px;"> </img>
+<img class="Cat" id="Cat4" src="Images/Cat2.png" alt="" width=100px height=65px style="top:510px; left:430px;"> </img>
+<img class="Cat" id="Cat5" src="Images/Cat3.png" alt="" width=150px height=195 style="top:560px; left:500px;"> </img>
+<img class="Cat" id="Cat6" src="Images/Cat4.png" alt="" width=90px height=195 style="top:560px; left:620px;"> </img>
+<img class="Cat" id="Cat7" src="Images/Cat5.png" alt="" width=70px height=115 style="top:170px; left:160px;"> </img>
+<img class="Cat" id="Cat8" src="Images/Cat6.png" alt="" width=120px height=80 style="top:520px; left:270px;"> </img>
+<img class="Cat" id="Cat9" src="Images/Cat4.png" alt="" width=70px height=155 style="top:530px; left:370px; transform:scaleX(-1);"> </img>
+<img class="Cat" id="Cat10" src="Images/Cat3.png" alt="" width=70px height=100 style="top:490px; left:710px; transform:scaleX(-1);"> </img>
+<img class="Cat" id="Cat11" src="Images/Cat2.png" alt="" width=140px height=90px style="top:600px; left:210px; transform:scaleX(-1);"> </img>
+<img src="Images/Question Box.png" alt="" width=900px height=690px style="top:150px; right:10px"> </img>
+
+<!-- Black box with thumbs up and thumbs down images -->
+<div style="width:50px; height:50px; position:fixed; border:10px solid Black; left:700px; top:200px"> </div>
+<img id="thumbsUp" src="Images/green-thumbs-up.png" alt="" width=80px height=105px style="left:700px; top:170px; visibility:hidden"> </img>
+<img id="thumbsDown" src="Images/red-thumbs-down.png" alt="" width=80px height=105px style="left:700px; top:200px; visibility:hidden"> </img>
+
+<!-- Answer streak and Goodjob/WrongAnswer text and score-->
+<span style="position:fixed; left:600px; top:280px; font-size:35pt; font-family:Impact;"> Answer Streak </span>
+
+<span id="ghostStreak" style="position:fixed; left:720px; top:330px; font-size:35pt; font-family:Impact; color:green;"> 0 </span>
+<span id="streak" style="position:fixed; left:720px; top:330px; font-size:35pt; font-family:Impact; color:green;"> 0 </span>
+
+<span id="correct" style=""> CORRECT! GOOD JOB! </span>
+<span id="incorrect" style=""> THATS NOT CORRECT,<br> TRY AGAIN </span>
+
+<span id="score"> SCORE: <span id="scoreValue" style="color:purple;"> 0 </span></span>
+
+<!-- the question and the answer values -->
+<span style="position:fixed; right:130px; top:50px; font-family:June; font-size:30pt;"> HOW MANY CATS DO YOU</span>
+<span style="position:fixed; right:230px; top:100px; font-family:June; font-size:30pt;"> SEE ON THE LEFT? </span>
+
+<span class="Answer" style="right:250px; top:400px;"> 12 </span>
+<span class="Answer" style="right:630px; top:400px;"> 13 </span>
+<span class="Answer" style="right:450px; top:500px;"> 14 </span>
+
+<!-- The script! -->
+<script src="CountCats.js"> </script>
+
+</body>
+</html>
