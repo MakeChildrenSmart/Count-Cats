@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<style>
+@font-face { font-family: June; src: url('JUNEBUG.TTF'); } 
+
+body {
+	background-color: #FFEFD5;
+}
+
+img {
+	position: absolute;
+	-webkit-user-drag: none;
+}
+
+.Cat {
+	visibility: hidden;
+}
+
+.Answer {
+	position: absolute;
+	font-family: June;
+	color: White;
+	opacity: 0.65;
+	font-size: 60pt;
+}
+
+#correct {
+	position:absolute; 
+	left:450px; 
+	top:100px; 
+	font-size:25pt;   <!-- 35pt -->
+	font-family:Arial; 
+	font-weight:900;
+	color:green;
+	visibility:hidden;
+}
+
+#incorrect {
+	position:absolute; 
+	left:450px; 
+	top:60px; 
+	font-size:35pt; 
+	font-family:Arial; 
+	font-weight:900;
+	text-align:center;
+	color:red;
+	visibility:hidden;
+}
+
+#score {
+	position:absolute;
+	font-size:30pt;
+	font-family:June;
+}
+
+* {
+	user-select:none;
+}
+
+</style>
+</head>
+
+<!-- //height  943   -->
+<!-- //width   1920 -->
+<body>
+<div id="TheWholeGame" style="visibility:visible;">
+	<!-- Contains the house image with all the cats. Cats are initially hidden -->
+	<img id="catPartyHouse" src="Images/House.png" alt="" width=46.875% style="top:100px; left:-5px"> </img>	
+	<img class="Cat" id="Cat1" src="Images/Cat1.png" alt="" width=10.4166% style="top:560px; left:30px; transform:scaleX(-1);"> </img>
+	<img class="Cat" id="Cat2" src="Images/Cat1.png" alt="" width=6.25% style="top:490px; left:370px;"> </img>
+	<img class="Cat" id="Cat3" src="Images/Cat7.png" alt="" width=5.2083% style="top:520px; left:570px;"> </img>
+	<img class="Cat" id="Cat4" src="Images/Cat2.png" alt="" width=5.2083% style="top:510px; left:430px;"> </img>
+	<img class="Cat" id="Cat5" src="Images/Cat3.png" alt="" width=7.8125% style="top:560px; left:500px;"> </img>
+	<img class="Cat" id="Cat6" src="Images/Cat4.png" alt="" width=4.6875% style="top:560px; left:620px;"> </img>
+	<img class="Cat" id="Cat7" src="Images/Cat5.png" alt="" width=3.645% style="top:170px; left:160px;"> </img>
+	<img class="Cat" id="Cat8" src="Images/Cat6.png" alt="" width=6.25% style="top:520px; left:270px;"> </img>
+	<img class="Cat" id="Cat9" src="Images/Cat4.png" alt="" width=3.645% style="top:530px; left:370px; transform:scaleX(-1);"> </img>
+	<img class="Cat" id="Cat10" src="Images/Cat3.png" alt="" width=3.645% style="top:490px; left:710px; transform:scaleX(-1);"> </img>
+	<img class="Cat" id="Cat11" src="Images/Cat2.png" alt="" width=7.29% style="top:600px; left:210px; transform:scaleX(-1);"> </img>
+	<img id="questBox" src="Images/Question Box.png" alt="" width=46.875% style="top:150px; right:10px"> </img>
+	<!-- w/h  900/690  -->
+	
+	<!-- Black box with thumbs up and thumbs down images -->
+	<div id="checkBox" style="width:2.604%; height:50px; position:absolute; border:10px solid Black; left:700px; top:200px; visibility:hidden;"> </div>
+	<img id="thumbsUp" src="Images/green-thumbs-up.png" alt="" width=4.16% style="left:700px; top:170px; visibility:hidden"> </img>
+	<img id="thumbsDown" src="Images/red-thumbs-down.png" alt="" width=4.16% style="left:700px; top:200px; visibility:hidden"> </img>
+
+	<!-- Answer streak and Goodjob/WrongAnswer text and score-->
+	<span id="ghostStreak" style="position:absolute; left:720px; top:330px; font-size:35pt; font-family:Impact; color:purple;">  </span>
+
+	<span id="correct" style=""> CORRECT! GOOD JOB! </span>
+	<span id="incorrect" style=""> THAT'S NOT CORRECT,<br> TRY AGAIN </span>
+
+	<span id="score"> SCORE: <span id="scoreValue" style="color:purple;"> 0 </span></span>
+
+	<!-- the question and the answer values -->
+	<span id="question" style="position:absolute; right:160px; top:50px; font-family:June; font-size:35pt; text-align:center;"> HOW MANY CATS <br> ARE THERE? </span>
+
+	<span id="ans1" class="Answer" style="right:250px; top:400px;"> 12 </span>
+	<span id="ans2" class="Answer" style="right:630px; top:400px;"> 13 </span>
+	<span id="ans3" class="Answer" style="right:450px; top:500px;"> 14 </span>
+
+	<audio id="tryAgain1" style="visibility:hidden; position:absolute;" controls>
+		<source src="audio/TryAgain.wav" type="audio/wav">
+	</audio>
+	
+	<audio id="tryAgain2" style="visibility:hidden; position:absolute;" controls>
+		<source src="audio/TryAgain2.wav" type="audio/wav">
+	</audio>
+	
+	<audio id="great1" style="visibility:hidden; position:absolute;" controls>
+		<source src="audio/great.mp3" type="audio/mpeg">
+	</audio>
+	
+	<audio id="great2" style="visibility:hidden; position:absolute;" controls>
+		<source src="audio/awesome.mp3" type="audio/mpeg">
+	</audio>
+	
+	<audio id="great3" style="visibility:hidden; position:absolute;" controls>
+		<source src="audio/wow.mp3" type="audio/mpeg">
+	</audio>
+	
+	<audio id="great4" style="visibility:hidden; position:absolute;" controls>
+		<source src="audio/youDidIt.mp3" type="audio/mpeg">
+	</audio>
+	
+	<audio id="keepItUp" style="visibility:hidden; position:absolute;" controls>
+		<source src="audio/goodJobKeepItUp.mp3" type="audio/mpeg">
+	</audio>
+	
+	<!-- The script! -->
+	<script src="CountCats.js"> </script>
+</div>
+
+<div id="TheEndScreen" style="visibility:hidden;">
+	<img src="Images/winSmiley.png" alt="" style="position:absolute; width:15vw; height:15vw; top:8vw; left:42vw"> </img>
+	<span style="position:absolute; top:25vw; left:13vw; font-family:June; font-size:3vw; text-align:center; color:green;"> YOU WIN! GOOD JOB! <br> PRESS THE BUTTON TO PLAY AGAIN!!</span>
+	<button id="replay" style="poisition:absolute; border-radius:0.5vw; border-width:0.5vw; width:15vw; height:5vw; color:Orange; font-family:June; font-size:1.5vw; background-color:Yellow; border-color:orange; margin-top:34vw; margin-left:43vw;"> Play Again! </button>
+</div>
+
+</body>
+</html>
